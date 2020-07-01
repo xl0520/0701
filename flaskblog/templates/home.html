@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+            </div>
+            <h2><a class="article-title" href="{{ url_for('post', post_title=post.title) }}">{{ post.title }}</a></h2>
+            <h6> Path: </h6>
+            <a href="{{ post.path }}">{{ post.path }}</a>
+            <h6> Landing Page Path: </h6>
+            <a href="{{ post.landing_page_path }}">{{ post.landing_page_path }}</a>
+            <h6> Repository Path: </h6>
+            <a href="{{ post.repository_path }}">{{ post.repository_path }}</a>
+            <h6> Github Repository Path: </h6>
+            <a href="{{ post.github_repository_path }}">{{ post.github_repository_path }}</a> 
+            <h6>Short Description: </h6>
+            <p class="article-content">{{ post.short_description }}</p>
+            <h6>Create By:</h6>
+            <p class="article-content">{{ post.created_by }}</p>
+            <h6>Maintained By:</h6>
+            <p class="article-content">{{ post.maintained_by }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

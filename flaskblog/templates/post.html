@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="media content-section">
+    
+    <div class="media-body">
+      <div class="article-metadata">
+        <div>
+          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_post', post_title=post.title) }}">Update</a>
+          <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+        </div>
+      </div>
+      <h2 class="article-title">{{ post.title }}</h2>
+      <h6> Path: </h6>
+      <a href="{{ post.path }}">{{ post.path }}</a>
+      <h6> Parent Landing Page Path: </h6>
+      <a href="{{ post.parent_landing_page_path }}">{{ post.parent_landing_page_path }}</a>
+      <h6> Landing Page Path: </h6>
+      <a href="{{ post.landing_page_path }}">{{ post.landing_page_path }}</a>
+      <h6> Repository Path: </h6>
+      <a href="{{ post.repository_path }}">{{ post.repository_path }}</a>
+      <h6> Github Repository Path: </h6>
+      <a href="{{ post.github_repository_path }}">{{ post.github_repository_path }}</a> 
+      <h6>Short Description: </h6>
+      <p class="article-content">{{ post.short_description }}</p>
+      <h6>Long Description:</h6>
+      <p class="article-content">{{ post.long_description }}</p>
+      <h6>Long Description HTML:</h6>
+      <p class="article-content">{{ post.long_description_html }}</p>
+      <h6>Technical Description:</h6>
+      <p class="article-content">{{ post.technical_description }}</p>
+      <h6>Databases Used:</h6>
+      <p class="article-content">{{ post.databases_used }}</p>      
+      <h6>Technical Database Used:</h6>
+      <p class="article-content">{{ post.technical_databases_used }}</p>
+      <h6>Create By:</h6>
+      <p class="article-content">{{ post.created_by }}</p>
+      <h6>Maintained By:</h6>
+      <p class="article-content">{{ post.maintained_by }}</p>
+      <h6>Maintained By Backup:</h6>
+      <p class="article-content">{{ post.maintained_by_backup }}</p>
+    </div>
+  </article>
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="{{ url_for('delete_post', post_title=post.title) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

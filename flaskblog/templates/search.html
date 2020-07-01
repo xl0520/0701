@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST">
+    <input type="text" autofocus="autofocus" name="search_string">
+    <input type="submit" formaction="/search" value="Search By Title">
+</form>
+
+<h3>{{ legend }}</h3>
+{% if titles %}
+    <table>
+
+        <tbody>
+            {% for row in titles %}
+            
+            <tr>
+                    <h5><a class="article-title" href="{{ url_for('post', post_title=row.title) }}">{{ row.title}}</a></h5>
+                
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+{% endblock content %}
