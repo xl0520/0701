@@ -21,6 +21,7 @@ from flaskblog import db#, login_manager
 
 
 class Post(db.Model):
+    __tablename__ = 'Post'
     #id = db.Column(db.Integer, primary_key=True)
 
     title = db.Column(db.String(100), primary_key=True, nullable=False)
